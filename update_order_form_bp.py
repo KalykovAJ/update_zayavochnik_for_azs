@@ -2,7 +2,7 @@
 from drive_uploader import run_sync
 
 # НАСТРОЙКИ КОНКРЕТНОЙ СЕТИ АЗС
-NETWORK_NAME = "Bishkek Petroleum"
+NETWORK_NAME = "Бишкек Петролеум"
 FOLDER_ID = "12pQUXu34SaCVS7mwUBCkBIeI4699iV_z"  # ID папки этой сети
 LOCAL_FILE = r"C:\Users\ajkal\OneDrive\Desktop\Заявочники АЗС\Заявочник БП.xlsx"
 CREDENTIALS = "credentials.json"  # Можно использовать общие ключи или свои для сети

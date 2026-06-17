@@ -1,11 +1,13 @@
 # run_munay_prom.py
+import os
 from drive_uploader import run_sync
 
 # НАСТРОЙКИ КОНКРЕТНОЙ СЕТИ АЗС
 NETWORK_NAME = "Партнер Нефть"
 FOLDER_ID = "11qDmmyMzouE8vFVGdT3aXGHEJJDa1Zu8"  # ID папки этой сети
-LOCAL_FILE = r"C:\Users\ajkal\OneDrive\Desktop\Заявочники АЗС\Заявочник ПН.xlsx"
-CREDENTIALS = "credentials.json"  # Можно использовать общие ключи или свои для сети
+LOCAL_FILE = r"C:\Users\Пользователь\Desktop\Заявочники АЗС\Заявочник ПН.xlsx"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CREDENTIALS = os.path.join(BASE_DIR, "credentials.json")
 
 if __name__ == "__main__":
     run_sync(

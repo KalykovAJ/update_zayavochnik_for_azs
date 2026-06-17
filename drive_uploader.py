@@ -28,7 +28,7 @@ def update_zayavka_on_google_drive(
     )
     service = build("drive", "v3", credentials=creds)
 
-    print(f"Поиск файла '{filename_in_cloud}' в папке Google Drive...")
+    print(f"Шаг 1: Поиск файла '{filename_in_cloud}' в папке Google Drive...")
 
     # 2. Поиск файла в облаке
     query = f"name = '{filename_in_cloud}' and '{folder_id}' in parents and trashed = false"
@@ -42,7 +42,7 @@ def update_zayavka_on_google_drive(
         )
 
     file_id = files[0]["id"]
-    print(f"Файл найден (ID: {file_id}). Обновление содержимого...")
+    print(f"Шаг 2: Файл найден (ID: {file_id}). Обновление содержимого...")
 
     # 3. Загрузка новых данных
     media = MediaFileUpload(
@@ -57,7 +57,7 @@ def update_zayavka_on_google_drive(
         fields="id"
     ).execute()
 
-    print("Данные в облаке успешно обновлены!")
+    print("Шаг 3: Данные в облаке успешно обновлены!")
 
     # 4. Формирование прямой ссылки
     return f"https://drive.google.com/uc?export=download&id={file_id}"
@@ -66,8 +66,7 @@ def update_zayavka_on_google_drive(
 def run_sync(network_name: str, local_file: str, folder_id: str, credentials_path: str = "credentials.json"):
     """Универсальная обертка для запуска синхронизации и красивого вывода в консоль"""
     try:
-        print(f"\n Начало синхронизации для сети: {network_name}")
-        print("-" * 50)
+        print(f"--- Начало синхронизации для сети: {network_name} ---")
 
         final_link = update_zayavka_on_google_drive(
             local_path=local_file,
@@ -75,8 +74,7 @@ def run_sync(network_name: str, local_file: str, folder_id: str, credentials_pat
             credentials_json_path=credentials_path,
         )
 
-        print("\n" + "=" * 50)
-        print(f" СИНХРОНИЗАЦИЯ С GOOGLE DRIVE ЗАВЕРШЕНА ({network_name})!")
+        print(f"Шаг 4: СИНХРОНИЗАЦИЯ С GOOGLE DRIVE ЗАВЕРШЕНА ({network_name})!")
         print("=" * 50)
         print("Ссылка для сотрудников АЗС (прямое скачивание):")
         print(final_link)

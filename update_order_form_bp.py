@@ -1,6 +1,7 @@
 # run_munay_prom.py
 import os
 from drive_uploader import run_sync
+from text_uploader import run_text_sync
 
 # НАСТРОЙКИ КОНКРЕТНОЙ СЕТИ АЗС
 NETWORK_NAME = "Bishkek Petroleum"
@@ -13,6 +14,14 @@ if __name__ == "__main__":
     run_sync(
         network_name=NETWORK_NAME,
         local_file=LOCAL_FILE,
+        folder_id=FOLDER_ID,
+        credentials_path=CREDENTIALS
+    )
+
+# 2. Синхронизируем сопутствующий текстовый файл из той же папки
+    run_text_sync(
+        network_name=NETWORK_NAME,
+        local_excel_file=LOCAL_FILE,
         folder_id=FOLDER_ID,
         credentials_path=CREDENTIALS
     )
